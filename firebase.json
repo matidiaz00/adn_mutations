@@ -1,9 +1,6 @@
 {
   "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" i"
-    ],
-    "source": "./"
+    "source": "functions"
   },
   "hosting": {
     "public": "public",
