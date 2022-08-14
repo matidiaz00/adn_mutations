@@ -4,7 +4,7 @@ import { addEntry } from './controllers/entry.controller';
 
 const app = express()
 
-app.get('/', (req, res) => res.status(200).send('hola mundo5!'))
+app.get('/', (req, res) => res.status(200).send('hola mundo6!'))
 app.post('/mutat', addEntry)
 
 exports.app = https.onRequest(app)

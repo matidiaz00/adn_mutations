@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import firebaseAccountCredentials from '../firebase.sdk.key.json';
+import firebaseAccountCredentials from './firebase.sdk.key.json';
 
 const serviceAccount = firebaseAccountCredentials as admin.ServiceAccount
 

@@ -2,11 +2,15 @@
   "name": "adn_mutations",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./functions/lib/index.js",
   "scripts": {
-    "start:emulators": "firebase emulators:start",
-    "start:functions": "cd functions && npm run build:watch",
-    "start": "concurrently \"npm run start:functions\" \"npm run start:emulators\""
+    "build": "tsc",
+    "serve:api": "tsc --watch",
+    "serve": "firebase emulators:start",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy",
+    "logs": "firebase functions:log"
   },
   "repository": {
     "type": "git",
@@ -18,11 +22,15 @@
     "url": "https://github.com/matidiaz00/adn_mutations/issues"
   },
   "homepage": "https://github.com/matidiaz00/adn_mutations#readme",
-  "devDependencies": {
-    "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.18.0"
-  },
   "dependencies": {
-    "concurrently": "^7.3.0"
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.45",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.5.4"
   }
 }

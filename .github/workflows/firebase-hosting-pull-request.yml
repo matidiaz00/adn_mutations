@@ -29,7 +29,7 @@ jobs:
         with:
           name: "firebase.sdk.key.json"
           json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADN_MUTATIONS }}
-          dir: '/'
+          dir: '/functions/lib/config'
 
       - name: Build Project
         run: npm ci && npm run build
