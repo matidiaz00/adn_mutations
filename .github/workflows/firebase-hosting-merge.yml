@@ -34,7 +34,7 @@ jobs:
           json: ${{ secrets.FIREBASE_SDK_KEY }}
           dir: 'src/config'
 
-      - name: Build Project
+      - name: Install dependencies and build NodeJS Project
         run: npm ci && npm run build
 
       - name: Install Firebase Tools

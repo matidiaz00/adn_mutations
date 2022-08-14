@@ -18,7 +18,7 @@
     "url": "https://github.com/matidiaz00/adn_mutations/issues"
   },
   "engines": {
-    "node": "16.x.x"
+    "node": "16"
   },
   "homepage": "https://github.com/matidiaz00/adn_mutations#readme",
   "dependencies": {
