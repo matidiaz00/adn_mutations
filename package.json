@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/matidiaz00/adn_mutations/issues"
   },
+  "engines": {
+    "node": "16.x.x"
+  },
   "homepage": "https://github.com/matidiaz00/adn_mutations#readme",
   "dependencies": {
     "firebase-admin": "^10.0.2",
