@@ -12,12 +12,6 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - name: Retrieve npm cache (if any)
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: npm-packages
-
       - name: Use Node.js v16.14.2
         uses: actions/setup-node@v1
         with:
