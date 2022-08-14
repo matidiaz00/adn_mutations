@@ -28,16 +28,14 @@ jobs:
         uses: jsdaniell/create-json@1.1.2
         with:
           name: "firebase.sdk.key.json"
-          json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADN_MUTATIONS }}
-          dir: '/functions/lib/config'
+          json: ${{ secrets.FIREBASE_SDK_KEY }}
+          dir: 'src/config'
 
       - name: Build Project
         run: npm ci && npm run build
 
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools
+
       - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADN_MUTATIONS }}'
-          channelId: live
-          projectId: adn-mutations
+        run: 'firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.FIREBASE_PROJECT_ID }}'
