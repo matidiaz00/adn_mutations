@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 
 app.get('/', (req: Request, res: Response) => {
+  console.log(req)
   res.send('Express + TypeScript Server');
 });
 
