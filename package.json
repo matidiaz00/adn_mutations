@@ -1,0 +1,45 @@
+{
+  "name": "adn_mutations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "clean": "rm -rf dist build package",
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matidiaz00/adn_mutations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matidiaz00/adn_mutations/issues"
+  },
+  "homepage": "https://github.com/matidiaz00/adn_mutations#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "concurrently": "^7.3.0",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "esbuild": "^0.14.38",
+    "eslint": "^8.14.0",
+    "jest": "27.0.0",
+    "nodemon": "^2.0.19",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typedoc": "^0.22.15",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
