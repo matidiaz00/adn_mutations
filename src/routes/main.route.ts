@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { swaggerSpec } from "../services/swagger.services";
+import SwaggerController from "../controllers/swagger.controller";
 import { Router } from "express";
 
 const router = Router();
@@ -8,9 +8,6 @@ const router = Router();
 router.get('/', (req: Request, res: Response) => res.status(200).send('API OK!!'));
 
 // serve swagger
-router.get('/swagger.json', (req: Request, res: Response) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(swaggerSpec);
-});
+router.get('/swagger.json', SwaggerController);
 
 export default router;
