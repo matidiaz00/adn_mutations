@@ -24,10 +24,10 @@ const hasMutation = (req: Request, res: Response, next: NextFunction) => {
         ],
     };
     /** Swagger specification */
-    //const swaggerSpec = swaggerJSDoc(options);
+    const swaggerSpec = swaggerJSDoc(options);
     //res.setHeader('Content-Type', 'application/json');
     //res.send(swaggerSpec);
-    res.status(200).send('API swagger!!')
+    res.status(200).send(swaggerSpec)
 }
   
 export default hasMutation;
