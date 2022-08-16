@@ -17,7 +17,8 @@ const options = {
     swaggerDefinition: getDefinition,
     // path to the API docs
     apis: [
-        resolve(__dirname, '../') + '/routes/v1/*.route.*',
+        '../routes/v1/**/*.route.*',
+        '../routes/v1/v1.route.*',
     ],
 };
 

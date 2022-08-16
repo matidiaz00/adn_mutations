@@ -7,9 +7,6 @@
 /** Express dependency */
 import { Router } from 'express';
 
-/** Route for API */
-const route = '/';
-
 /** Router dependency */
 const router = Router();
 
@@ -77,6 +74,6 @@ import mutation from '../../../controllers/mutations.controller';
 *         schema:
 *           $ref: '#/definitions/error'
 */
-router.post(route, mutation);
+router.post('/', mutation);
 
 export default router;

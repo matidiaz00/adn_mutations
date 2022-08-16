@@ -7,9 +7,6 @@
 /** Express dependency */
 import { Router } from 'express';
 
-/** Route for API */
-const route = '/';
-
 /** Router dependency */
 const router = Router();
 
@@ -74,6 +71,6 @@ import stats from '../../../controllers/stats.controller';
 *         schema:
 *           $ref: '#/definitions/error'
 */
-router.get(route, stats);
+router.get('/', stats);
 
 export default router;
