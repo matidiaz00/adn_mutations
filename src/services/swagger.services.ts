@@ -12,13 +12,13 @@ import { getDefinition } from '../config/environments.config';
  ************************************************/
 
 /** Swagger options/definition object */
-const options = {
+export const options = {
     // import swaggerDefinitions
     swaggerDefinition: getDefinition,
     // path to the API docs
     apis: [
-        '../routes/v1/**/*.route.*',
-        '../routes/v1/v1.route.*',
+        //'../routes/v1/**/*.route.*',
+        //'../routes/v1/v1.route.*',
     ],
 };
 
