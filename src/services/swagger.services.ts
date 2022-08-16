@@ -21,7 +21,7 @@ const options = {
     swaggerDefinition: definition[nodeEnv].swaggerDefinition,
     // path to the API docs
     apis: [
-        resolve(__dirname, '../') + '/routes/**/*.route.js',
+        resolve(__dirname, '../') + '/routes/**/*.route.*',
     ],
 };
 
