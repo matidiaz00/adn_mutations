@@ -15,7 +15,7 @@ import { swaggerDefinition } from '../config/environments.interface'
 import { dev_api_url, prod_api_url } from '../config/main.config'
 import { nodeEnv } from '../config/main.config';
  
-const hasMutation = async (req: Request, res: Response, next: NextFunction) => { 
+const hasMutation = (req: Request, res: Response, next: NextFunction) => { 
     /** Swagger options/definition object */
     const options = {
         failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.
@@ -26,7 +26,7 @@ const hasMutation = async (req: Request, res: Response, next: NextFunction) => {
                 version: '1.0.1',
                 description: 'RESTFUL API Documentation',
             },
-            host: prod_api_url,
+            host: nodeEnv === 'development' ? dev_api_url : prod_api_url,
             basePath: '/',
             tags: [
                 { name: 'API' },
@@ -39,10 +39,11 @@ const hasMutation = async (req: Request, res: Response, next: NextFunction) => {
         ],
     };
     /** Swagger specification */
-    const swaggerSpec = await swaggerJSDoc(options);
-    //res.setHeader('Content-Type', 'application/json');
-    //res.send(swaggerSpec);
-    res.status(200).send(swaggerSpec)
+    const swaggerSpec = swaggerJSDoc(options);
+    if (swaggerSpec) {
+        res.setHeader('Content-Type', 'application/json');
+        res.send(swaggerSpec);
+    } else res.send('hola');
 }
   
 export default hasMutation;
