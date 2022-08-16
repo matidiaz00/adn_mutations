@@ -6,18 +6,9 @@ interface swaggerInfoInterface {
 
 interface swaggerTagInterface { name: 'API' }
 
-interface swaggerDefinitionDataInterface {
+export interface swaggerDefinition {
     info: swaggerInfoInterface;
     host: string;
     basePath: string;
     tags: swaggerTagInterface[];
-}
-
-export interface swaggerDefinition {
-    swaggerDefinition: swaggerDefinitionDataInterface;
-}
-
-export interface EnvironmentInterface {
-    development: swaggerDefinition;
-    production: swaggerDefinition;
 }

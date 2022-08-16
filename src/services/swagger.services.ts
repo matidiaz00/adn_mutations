@@ -1,15 +1,11 @@
-/** Swagger JSDoc instance */
+
 import { resolve } from 'path';
+
+/** Swagger JSDoc instance */
 import swaggerJSDoc from 'swagger-jsdoc';
 
 /** Swagger JSDoc instance | Environments */
-import { enviroment } from '../config/environments.config';
-
-/** Node Environment */
-import { nodeEnv } from '../config/main.config';
-
-/** Get definition object */
-const definition: any = enviroment()
+import { getDefinition } from '../config/environments.config';
 
 /************************************************
  * Swagger doc definition and parameterization
@@ -18,10 +14,10 @@ const definition: any = enviroment()
 /** Swagger options/definition object */
 const options = {
     // import swaggerDefinitions
-    swaggerDefinition: definition[nodeEnv].swaggerDefinition,
+    swaggerDefinition: getDefinition,
     // path to the API docs
     apis: [
-        resolve(__dirname, '../') + '/routes/**/*.route.*',
+        resolve(__dirname, '../') + '/routes/v1/*.route.*',
     ],
 };
 
