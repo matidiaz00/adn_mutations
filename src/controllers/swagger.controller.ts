@@ -10,13 +10,28 @@ import { Request, Response, NextFunction } from 'express'
 import swaggerJSDoc from 'swagger-jsdoc';
 
 /** Swagger JSDoc instance | Environments */
-import { getDefinition } from '../config/environments.config';
+//import { getDefinition } from '../config/environments.config';
+import { swaggerDefinition } from '../config/environments.interface'
+import { dev_api_url, prod_api_url } from '../config/main.config'
+import { nodeEnv } from '../config/main.config';
  
-const hasMutation = (req: Request, res: Response, next: NextFunction) => { 
+const hasMutation = async (req: Request, res: Response, next: NextFunction) => { 
     /** Swagger options/definition object */
     const options = {
+        failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.
         // import swaggerDefinitions
-        swaggerDefinition: getDefinition,
+        definition: {
+            info: {
+                title: 'API',
+                version: '1.0.1',
+                description: 'RESTFUL API Documentation',
+            },
+            host: nodeEnv === 'development' ? dev_api_url : prod_api_url,
+            basePath: '/',
+            tags: [
+                { name: 'API' },
+            ],
+        },
         // path to the API docs
         apis: [
             //'../routes/v1/**/*.route.*',
@@ -24,7 +39,7 @@ const hasMutation = (req: Request, res: Response, next: NextFunction) => {
         ],
     };
     /** Swagger specification */
-    const swaggerSpec = swaggerJSDoc(options);
+    const swaggerSpec = await swaggerJSDoc(options);
     //res.setHeader('Content-Type', 'application/json');
     //res.send(swaggerSpec);
     res.status(200).send(swaggerSpec)
