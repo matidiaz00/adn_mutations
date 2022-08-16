@@ -26,7 +26,7 @@ const hasMutation = async (req: Request, res: Response, next: NextFunction) => {
                 version: '1.0.1',
                 description: 'RESTFUL API Documentation',
             },
-            host: nodeEnv === 'development' ? dev_api_url : prod_api_url,
+            host: prod_api_url,
             basePath: '/',
             tags: [
                 { name: 'API' },
