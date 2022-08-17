@@ -67,4 +67,4 @@ node_modules/
 
 functions/node_modules
 functions/lib
-src/config/*.json
+src/services/firebase.sdk.key.json

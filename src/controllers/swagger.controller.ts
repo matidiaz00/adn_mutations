@@ -10,10 +10,8 @@ import { Request, Response, NextFunction } from 'express'
 import swaggerJSDoc from 'swagger-jsdoc';
 
 /** Swagger JSDoc instance | Environments */
-//import { getDefinition } from '../config/environments.config';
-import { swaggerDefinition } from '../config/environments.interface'
-import { dev_api_url, prod_api_url } from '../config/main.config'
-import { nodeEnv } from '../config/main.config';
+import { dev_api_url, prod_api_url } from '../environment'
+import { nodeEnv } from '../environment';
  
 const hasMutation = (req: Request, res: Response, next: NextFunction) => { 
     /** Swagger options/definition object */
@@ -34,16 +32,14 @@ const hasMutation = (req: Request, res: Response, next: NextFunction) => {
         },
         // path to the API docs
         apis: [
-            //'../routes/v1/**/*.route.*',
-            //'../routes/v1/v1.route.*',
+            '../routes/v1/**/*.route.*',
+            '../routes/v1/v1.route.*',
         ],
     };
     /** Swagger specification */
     const swaggerSpec = swaggerJSDoc(options);
-    if (swaggerSpec) {
-        res.setHeader('Content-Type', 'application/json');
-        res.send(swaggerSpec);
-    } else res.send('hola');
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
 }
   
 export default hasMutation;
