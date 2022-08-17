@@ -1,8 +1,7 @@
 import { NextFunction, Response, Request } from "express";
-import { auth } from '../services/firebase.service'
-import axios, { AxiosResponse } from 'axios';
+import { auth } from "../services/firebase.service";
 
-const AuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers && req.headers.authorization ? req.headers.authorization.split(' ')[1] : null;
     if (token) {
         try {
