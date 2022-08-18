@@ -6,8 +6,8 @@ import auth from '../../middlewares/auth.middleware'
 
 const router = Router();
 
-router.use('/adn/mutations', auth, mutations);
-router.use('/adn/stats', auth, stats);
-router.use('/account/json-web-token', jwt);
+router.use('/dna/mutations', auth, mutations);
+router.use('/dna/stats', auth, stats);
+router.use('/accounts/json-web-token', jwt);
 
 export default router;

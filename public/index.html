@@ -10,7 +10,7 @@
     <title>SwaggerUI</title>
     <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
   </head>
-  <body>
+  <body style="margin: 0;">
   <div id="swagger-ui"></div>
   <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
   <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-standalone-preset.js" crossorigin></script>
@@ -18,11 +18,12 @@
     window.onload = () => {
       const url = 
         location.port ?
-        `http://localhost:5001/adn-mutations/us-central1/app/api/swagger.json` :
-        `https://us-central1-adn-mutations.cloudfunctions.net/app/api/swagger.json`
+        `http://localhost:5001/adn-mutations/us-central1/api/swagger.json` :
+        `https://us-central1-adn-mutations.cloudfunctions.net/api/swagger.json`
 
       window.ui = SwaggerUIBundle({
         url: url,
+        enableCORS: false,
         dom_id: '#swagger-ui',
         presets: [
           SwaggerUIBundle.presets.apis,

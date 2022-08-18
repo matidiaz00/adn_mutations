@@ -1,76 +1,62 @@
-/** 
- * @module routes/mutations 
- * @author Jose de Jesus Alvarez Hernandez
- * @desc mutation API routes  
- */
-
-/** Express dependency */
 import { Router } from 'express';
-
-/** Router dependency */
-const router = Router();
-
 import jwt from '../../../controllers/jwt.controller';
 
+const router = Router();
+
 /**
- * @swagger
- * definitions:
- *   error:
+ * @openapi
+ * components:
+ *   metadata:
+ *     type: object
  *     properties:
- *       code:
- *         type: integer
- *       message:
+ *       lastSignInTime:
  *         type: string
+ *         example: 
+ *       creationTime:
+ *         type: string
+ *         example: Wed, 17 Aug 2022 22:46:58 GMT
  */
+
 /**
-* @swagger
-* definitions:
-*   DNAObject:
-*     properties:
-*       dna:
-*         type: array   
-*         items: 
-*           type: string
-*/
-/**
- * @swagger
- * definitions:
- *   APIDNASuccess:
+ * @openapi
+ * components:
+ *   jwt:
+ *     type: object
  *     properties:
- *       count_mutations:
- *         type: number
- *       count_no_mutation:
- *         type: number
- *       ratio:
- *         type: number
+ *       uid:
+ *         type: string
+ *         example: hZfTGeyAUWhq5x1uDZzW3kB7kkb2
+ *       emailVerified:
+ *         type: boolean
+ *         example: false
+ *       disabled:
+ *         type: boolean
+ *         example: false
+ *       metadata:
+ *         $ref: '#/components/metadata'
+ *       tokensValidAfterTime:
+ *         type: string
+ *         example: Wed, 17 Aug 2022 22:46:58 GMT
+ *       providerData:
+ *         type: array
+ *         example: []
  */
+
 /**
-* @swagger
-* /api/token:
-*   get:
-*     tags:
-*       - token
-*     description: Gives the token of DNAs received
-*     produces:
-*       - application/json
-*     responses:
-*       200:
-*         description: Successful request
-*         schema:
-*           $ref: '#/definitions/APIDNASuccess'
-*       400:
-*         description: Bad request
-*         schema:
-*           $ref: '#/definitions/error'
-*       401:
-*         description: Unauthorized access
-*         schema:
-*           $ref: '#/definitions/error'
-*       404:
-*         description: Resource not found
-*         schema:
-*           $ref: '#/definitions/error'
-*/
+ * @openapi
+ * /accounts/json-web-token:
+ *   get:
+ *     summary: Gives the JSON Web Token or JWT.
+ *     tags:
+ *       - Accounts
+ *     responses:
+ *       200:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/jwt'
+ */
+
 router.get('/', jwt);
 
 export default router;

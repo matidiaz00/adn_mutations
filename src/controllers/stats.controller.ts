@@ -1,13 +1,10 @@
-/**
- * @module controllers/mutation
- * @author Jose de Jesus Alvarez Hernandez
- * @desc mutation Controllers
- */
-
 import { Request, Response, NextFunction } from 'express'
 import { db } from '../services/firebase.service'
 
 const getStats = async (req: Request, res: Response, next: NextFunction) => {
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     try {
         const snapshot = await db.collection('mutations').get(),
             statsDB = snapshot.docs.map(doc => doc.data()),

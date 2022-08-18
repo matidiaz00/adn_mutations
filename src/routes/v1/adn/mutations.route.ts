@@ -1,79 +1,107 @@
-/** 
- * @module routes/mutations 
- * @author Jose de Jesus Alvarez Hernandez
- * @desc mutation API routes  
- */
-
-/** Express dependency */
 import { Router } from 'express';
-
-/** Router dependency */
-const router = Router();
-
 import mutation from '../../../controllers/mutations.controller';
 
+const router = Router();
+
 /**
- * @swagger
- * definitions:
- *   error:
+ * @openapi
+ * components:
+ *   examples:
+ *     type: object
  *     properties:
- *       code:
- *         type: integer
+ *       dna:
+ *         type: array
+ */
+
+/**
+ * @openapi
+ * components:
+ *   dna_request:
+ *     type: object
+ *     properties:
+ *       dna:
+ *         type: array
+ */
+
+/**
+ * @openapi
+ * components:
+ *   data_example:
+ *     type: object
+ *     properties:
+ *       dna:
+ *         type: array
+ *         example: [
+ *           "ATGCGA", "CAGTGC", "TTATGT",
+ *           "AGAAGG", "AGTCAG", "TCACTG"
+ *         ]
+ *       hasMutation:
+ *         type: boolean
+ *         example: true
+ *       upsert:
+ *         type: boolean
+ *         example: true
+ *       new:
+ *         type: boolean
+ *         example: true
+ *       setDefaultsOnInsert:
+ *         type: boolean
+ *         example: true
+ */
+
+/**
+ * @openapi
+ * components:
+ *   mutation_success:
+ *     type: object
+ *     properties:
+ *       hasMutation:
+ *         type: boolean
+ *         example: true
  *       message:
  *         type: string
+ *         example: Has mutation
+ *       data:
+ *         $ref: '#/components/data_example'
  */
+
 /**
-* @swagger
-* definitions:
-*   DNAObject:
-*     properties:
-*       dna:
-*         type: array   
-*         items: 
-*           type: string
-*/
-/**
- * @swagger
- * definitions:
- *   APISuccess:
- *     properties:
- *       message:
- *         type: boolean
+ * @openapi
+ * /dna/mutations:
+ *   post:
+ *     summary: Indicates if a DNA has been mutated.
+ *     security: 
+ *       - bearerAuth: []
+ *     tags:
+ *       - DNA
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/dna_request'
+ *           examples:
+ *             hasMutation1:
+ *                value:
+ *                  { dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "AGTCAG", "TCACTG" ] }
+ *             hasMutation2:
+ *                value:
+ *                  { dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ] }
+ *             noMutation:
+ *                value:
+ *                  { dna: [ "ATGCGA", "CAGTGC", "TTATTT", "AGACGG", "GCGTCA", "TCACTG" ] }
+ *     responses:
+ *       200:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/mutation_success'
+ *       401:
+ *         description: Not authenticated
+ *       403:
+ *         description: Access token does not have the required scope
  */
-/**
-* @swagger
-* /api/mutation:
-*   post:
-*     tags:
-*       - Mutations
-*     description: Indicates if a DNA has been mutated
-*     produces:
-*       - application/json
-*     parameters:
-*       - name: dna
-*         description: DNA object
-*         in: body
-*         required: true
-*         schema:
-*           $ref: '#/definitions/DNAObject'
-*     responses:
-*       200:
-*         description: Successful request
-*         schema:
-*           $ref: '#/definitions/APISuccess'
-*       400:
-*         description: Bad request
-*         schema:
-*           $ref: '#/definitions/error'
-*       401:
-*         description: Unauthorized access
-*         schema:
-*           $ref: '#/definitions/error'
-*       404:
-*         description: Resource not found
-*         schema:
-*           $ref: '#/definitions/error'
-*/
+
 router.post('/', mutation);
 
 export default router;

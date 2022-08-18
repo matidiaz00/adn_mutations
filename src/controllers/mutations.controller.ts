@@ -1,14 +1,11 @@
-/**
- * @module controllers/mutation
- * @author Jose de Jesus Alvarez Hernandez
- * @desc mutation Controllers
- */
-
 import { Request, Response, NextFunction } from 'express'
 import { isHorizontal, isVertical, oblicualLeftToRight, oblicualRightToLeft } from '../services/mutations.service'
 import { db } from '../services/firebase.service'
 
 const hasMutation = async (req: Request, res: Response, next: NextFunction) => { 
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     const content_interface = {
         type:'Array of 6 strings',
         strings: 'Contains this specific letthers A,T,C,G',

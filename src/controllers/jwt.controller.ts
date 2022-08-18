@@ -1,9 +1,3 @@
-/**
- * @module controllers/mutation
- * @author Jose de Jesus Alvarez Hernandez
- * @desc mutation Controllers
- */
-
 import { Request, Response, NextFunction } from 'express'
 import { auth } from '../services/firebase.service'
  
