@@ -6,40 +6,29 @@ const router = Router();
 /**
  * @openapi
  * components:
- *   metadata:
- *     type: object
- *     properties:
- *       lastSignInTime:
- *         type: string
- *         example: 
- *       creationTime:
- *         type: string
- *         example: Wed, 17 Aug 2022 22:46:58 GMT
- */
-
-/**
- * @openapi
- * components:
- *   jwt:
+ *  schemas:
+ *   get_jwt_response:
  *     type: object
  *     properties:
  *       uid:
  *         type: string
- *         example: hZfTGeyAUWhq5x1uDZzW3kB7kkb2
  *       emailVerified:
  *         type: boolean
- *         example: false
  *       disabled:
  *         type: boolean
- *         example: false
  *       metadata:
- *         $ref: '#/components/metadata'
+ *         type: object
+ *         properties:
+ *           lastSignInTime:
+ *             type: string
+ *           creationTime:
+ *             type: string
  *       tokensValidAfterTime:
  *         type: string
- *         example: Wed, 17 Aug 2022 22:46:58 GMT
  *       providerData:
  *         type: array
- *         example: []
+ *         items:
+ *           type: string
  */
 
 /**
@@ -51,10 +40,20 @@ const router = Router();
  *       - Accounts
  *     responses:
  *       200:
+ *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/jwt'
+ *               $ref: '#/components/schemas/get_jwt_response'
+ *             example:
+ *               uid: hZfTGeyAUWhq5x1uDZzW3kB7kkb2
+ *               emailVerified: false
+ *               disabled: false
+ *               metadata: 
+ *                 lastSignInTime: null
+ *                 creationTime: Wed, 17 Aug 2022 22:46:58 GMT
+ *               tokensValidAfterTime: Wed, 17 Aug 2022 22:46:58 GMT
+ *               providerData: []
  */
 
 router.get('/', jwt);

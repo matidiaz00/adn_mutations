@@ -6,18 +6,16 @@ const router = Router();
 /**
  * @openapi
  * components:
- *   stats:
+ *  schemas:
+ *   get_stats_response:
  *     type: object
  *     properties:
  *       count_mutations:
  *         type: number
- *         example: 40
  *       count_no_mutation:
  *         type: number
- *         example: 100
  *       ratio:
  *         type: number
- *         example: 0.4
  */
 
 /**
@@ -31,14 +29,25 @@ const router = Router();
  *       - DNA
  *     responses:
  *       200:
+ *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/stats'
+ *               $ref: '#/components/schemas/get_stats_response'
+ *             example:
+ *               count_mutations: 40
+ *               count_no_mutation: 100
+ *               ratio: 0.4
  *       401:
  *         description: Not authenticated
+ *         headers:
+ *           Access-Control-Allow-Origin:
+ *             type: string
  *       403:
  *         description: Access token does not have the required scope
+ *         headers:
+ *           Access-Control-Allow-Origin:
+ *             type: string
  */
 
 router.get('/', stats);

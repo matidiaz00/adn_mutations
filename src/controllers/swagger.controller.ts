@@ -20,23 +20,21 @@ const swaggerDefinition: SwaggerDefinition = {
         url: 'https://matidiaz.com',
     },
     servers: [
-        { url: dev_api_url, description: 'Local Server', basePath: {default: 'v1'}},
-        { url: prod_api_url, description: 'Production Server', basePath: {default: 'v1'}}
+        { url: prod_api_url, description: 'Production Server'}
     ],
-    host: nodeEnv === 'development' ? dev_api_url : prod_api_url,
-    basePath: '/',
+    host: "https://us-central1-adn-mutations.cloudfunctions.net",
+    basePath: "/",
     components: {
         securitySchemes: {
-            bearerAuth: {
-                type: 'http',
-                scheme: 'bearer'
-            }
+          bearerAuth: {
+            type: 'http',
+            scheme: 'bearer'
+          }
         }
     },
     security: [{
         bearerAuth: []
     }]
-  
 }
 
 const options = {     
@@ -48,9 +46,7 @@ const options = {
  
 const hasMutation = (req: Request, res: Response, next: NextFunction) => { 
     const swaggerSpec = swaggerJSDoc(options);
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");      
+    res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
 }
   

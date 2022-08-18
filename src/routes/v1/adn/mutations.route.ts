@@ -6,63 +6,42 @@ const router = Router();
 /**
  * @openapi
  * components:
- *   examples:
+ *  schemas:
+ *   post_mutation_request:
  *     type: object
  *     properties:
  *       dna:
  *         type: array
+ *         items:
+ *           type: string
  */
 
 /**
  * @openapi
  * components:
- *   dna_request:
- *     type: object
- *     properties:
- *       dna:
- *         type: array
- */
-
-/**
- * @openapi
- * components:
- *   data_example:
- *     type: object
- *     properties:
- *       dna:
- *         type: array
- *         example: [
- *           "ATGCGA", "CAGTGC", "TTATGT",
- *           "AGAAGG", "AGTCAG", "TCACTG"
- *         ]
- *       hasMutation:
- *         type: boolean
- *         example: true
- *       upsert:
- *         type: boolean
- *         example: true
- *       new:
- *         type: boolean
- *         example: true
- *       setDefaultsOnInsert:
- *         type: boolean
- *         example: true
- */
-
-/**
- * @openapi
- * components:
- *   mutation_success:
+ *  schemas:
+ *   post_mutation_response:
  *     type: object
  *     properties:
  *       hasMutation:
  *         type: boolean
- *         example: true
  *       message:
  *         type: string
- *         example: Has mutation
  *       data:
- *         $ref: '#/components/data_example'
+ *         type: object
+ *         properties:
+ *           hasMutation:
+ *             type: boolean
+ *           upsert:
+ *             type: boolean
+ *           new:
+ *             type: boolean
+ *           setDefaultsOnInsert:
+ *             type: boolean
+ *           dna:
+ *             type: array
+ *             items:
+ *               type: string
  */
 
 /**
@@ -79,23 +58,33 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/dna_request'
+ *             $ref: '#/components/schemas/post_mutation_request'
  *           examples:
  *             hasMutation1:
  *                value:
- *                  { dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "AGTCAG", "TCACTG" ] }
+ *                  dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "AGTCAG", "TCACTG" ]
  *             hasMutation2:
  *                value:
- *                  { dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ] }
+ *                  dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" ]
  *             noMutation:
  *                value:
- *                  { dna: [ "ATGCGA", "CAGTGC", "TTATTT", "AGACGG", "GCGTCA", "TCACTG" ] }
+ *                  dna: [ "ATGCGA", "CAGTGC", "TTATTT", "AGACGG", "GCGTCA", "TCACTG" ]
  *     responses:
  *       200:
+ *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/mutation_success'
+ *               $ref: '#/components/schemas/post_mutation_response'
+ *             example:
+ *               hasMutation: true
+ *               message: Has mutation
+ *               data: 
+ *                  dna: [ "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "AGTCAG", "TCACTG" ]
+ *                  hasMutation: true
+ *                  upsert: true
+ *                  new: true
+ *                  setDefaultsOnInsert: true
  *       401:
  *         description: Not authenticated
  *       403:

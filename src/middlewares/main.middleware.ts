@@ -10,10 +10,21 @@ declare module 'express-serve-static-core' {
 }
 
 export const HeadersMiddleWare = (req: Request, res: Response, next: NextFunction) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    const allowedOrigins = [
+        'http://localhost:5001',
+        'http://localhost:5000',
+        'https://us-central1-adn-mutations.cloudfunctions.net',
+        'https://adn-mutations.web.app'
+    ];
+    const origin: string | undefined = req.headers.origin;
+    if (origin && allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, api_key, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS');
-    next();
+    res.header('Access-Control-Allow-Credentials', 'true');
+    return next();
 }
 
 export const ParserURLMiddleWare = bodyParser.urlencoded({
