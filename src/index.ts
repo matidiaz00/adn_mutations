@@ -14,4 +14,6 @@ app.use('/', MainRoute);
 
 app.use('/v1', v1Route);
 
-exports.api = https.onRequest(app)
+const api = https.onRequest(app)
+
+export { api, app }

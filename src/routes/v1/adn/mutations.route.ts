@@ -49,8 +49,6 @@ const router = Router();
  * /dna/mutations:
  *   post:
  *     summary: Indicates if a DNA has been mutated.
- *     security: 
- *       - bearerAuth: []
  *     tags:
  *       - DNA
  *     requestBody:

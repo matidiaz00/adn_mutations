@@ -23,8 +23,6 @@ const router = Router();
  * /dna/stats:
  *   get:
  *     summary: Gives the stats of DNAs received.
- *     security:
- *       - bearerAuth: []
  *     tags: 
  *       - DNA
  *     responses:
@@ -40,14 +38,8 @@ const router = Router();
  *               ratio: 0.4
  *       401:
  *         description: Not authenticated
- *         headers:
- *           Access-Control-Allow-Origin:
- *             type: string
  *       403:
  *         description: Access token does not have the required scope
- *         headers:
- *           Access-Control-Allow-Origin:
- *             type: string
  */
 
 router.get('/', stats);
