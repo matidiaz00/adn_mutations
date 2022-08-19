@@ -37,9 +37,9 @@ Este proyecto se desarrollo con la version 16 de [NodeJS](https://nodejs.org/), 
 
 Tambien para descargar el proyecto se recomienda tener Git instalado.
 
-<details markdown="1"><summary>Descargar y correr el proyecto</summary>
+<details markdown="1"><summary><b>Descargar y correr el proyecto</b></summary>
 <p>
-
+</br>
 Abrir la consola y dirigirse a la carpeta donde quieras descargar el respositorio y correr el siguiente comando
 
 ```
@@ -66,8 +66,9 @@ npm run serve
 </p>
 </details>
 
-<details markdown="2"><summary>Visualizar el proyecto</summary>
+<details markdown="2"><summary><b>Visualizar el proyecto</b></summary>
 <p>
+</br>
 Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/)
 
 Para hacer pruebas de la API se puede utilizar herramientas como postman o en mi caso recomiendo una extención de Visual Studio llamada Thunder Client, deje en la raiz del repositorio el archivo **thunder-client.json** para que lo puedan importar si lo desean.
@@ -76,8 +77,9 @@ La URL base de la API es la siguiente [localhost:5001/adn-mutations/us-central1/
 </p>
 </details>
 
-<details markdown="3"><summary>Listado de endpoints</summary>
+<details markdown="3"><summary><b>Listado de endpoints</b></summary>
 <p>
+</br>
 En la siguiente tabla esta la información de todos los endpoints
 
 Type | Endpoint | Description
@@ -90,8 +92,9 @@ GET | /v1/dna/stats | Estadisticas de mutaciones de ADN en nuestra base de datos
 </p>
 </details>
 
-<details markdown="4"><summary>Ejemplos para el endpoint POST /v1/dna/mutations</summary>
+<details markdown="4"><summary><b>Ejemplos para el endpoint POST /v1/dna/mutations</b></summary>
 <p>
+</br>
 Para el endpoint POST **/v1/dna/mutations** se necesita enviarle un JSON (en el Body Request de la llamada) de un ADN para que nos diga si tiene mutación o no, estos son unos ejemplos:
 
 Ejemplo de ADN con mutación
@@ -129,7 +132,7 @@ Otro ejemplo de ADN con mutación
 </p>
 </details>
 
-##Testing Unitario
+## Testing Unitario
 
 Para testear el proyecto se utilizo [JestJS](https://jestjs.io/), este tiene un archivo de configuración (jest.config.js) y con el siguiente comando lee todos los archivos *.spec.ts para testear todas las funcionalidades
 
