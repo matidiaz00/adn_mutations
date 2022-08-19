@@ -50,9 +50,9 @@ Tambien para descargar el proyecto se recomienda tener Git instalado.
 <details markdown="2"><summary><b>Visualizar el proyecto</b></summary>
 <p>
 
-Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/)
+Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/), desde la documentación se pueden probar los endpoints.
 
-Para hacer pruebas de la API se puede utilizar herramientas como postman o en mi caso recomiendo una extención de Visual Studio llamada Thunder Client, deje en la raiz del repositorio el archivo **thunder-client.json** para que lo puedan importar si lo desean.
+Si no es el caso para hacer pruebas de la API se puede utilizar herramientas como postman o en mi caso recomiendo una extención de Visual Studio llamada Thunder Client, deje en la raiz del repositorio el archivo **thunder-client.json** para que lo puedan importar si lo desean.
 
 La URL base de la API es la siguiente [localhost:5001/adn-mutations/us-central1/api](http://localhost:5001/adn-mutations/us-central1/api)
 </p>
@@ -118,3 +118,34 @@ Otro ejemplo de ADN con mutación
 Para testear el proyecto se utilizo [JestJS](https://jestjs.io/), este tiene un archivo de configuración (jest.config.js) y con el siguiente comando lee todos los archivos *.spec.ts para testear todas las funcionalidades
 
 `npm run test`
+
+**Rutas**
+
+Para las routes /src/routes/v1/**/*.spec.ts se testea lo siguiente:
+
+- Los casos en los que deve devolver 200
+- Los casos en los que deve devolver 403 si es el caso de un POST
+- Que contengan en el header el tipo de contenido application/json
+- Que el response devuelva lo que se espera
+- En el caso de POST tambien chequea todos los casos de envio del body request diferentes
+- Casos en los que el usuario haga mal la funcion (ej: que no exista el endpoint o envie mal un request)
+
+**Controladores**
+
+Para los controllers /src/controllers/*.spec.ts se testea lo siguiente:
+
+- Que todas las funciones devuelvan lo esperado
+- Que las llamadas a la base de datos funcionen como es esperado
+- Todos los casos que podria devolver las funciones
+- En el caso de Swagger que el objeto que devuelve corresponda a la documentacion oficial
+
+**Servicios**
+
+Para los services /src/services/*.spec.ts se testea lo siguiente:
+
+- Firebase: Que las conecciones a los servicios de firebase funcionen como se espera
+- Mutations: Que las funciones de buscar verticalmente, horizontalmente o en diagonal devuelvan lo esperado
+
+**Middlewares**
+
+Solo se fija si el usuario esta autenticado y que los resultados en todos los escenarios sean como se espera

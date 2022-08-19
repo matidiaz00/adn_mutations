@@ -42,4 +42,7 @@ describe('POST /v1/dna/mutations', async () => {
         expect(res_with_mutation.body.hasMutation).toBe(true);
     })
 
+    // Que pasa si se envia un request body incorrecto o no se envia ninguno
+    //- En el caso de POST tambien chequea todos los casos de envio del body request diferentes
+
 })
