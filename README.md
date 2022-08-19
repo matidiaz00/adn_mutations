@@ -39,18 +39,16 @@ Tambien para descargar el proyecto se recomienda tener Git instalado.
 
 <details markdown="1"><summary><b>Descargar y correr el proyecto</b></summary>
 <p>
-</br>
 
-1. Abrir la consola y dirigirse a la carpeta donde quieras descargar el respositorio y correr el siguiente comando```git clone https://github.com/matidiaz00/adn_mutations.git```
-2. Dirigirse a la nueva carpeta "adn_mutations" y correr el siguiente comando para instalar las dependencias```npm install```
-3. Ahora corremos el siguiente comando para compilar el proyecto cada vez que haya un cambio```npm run serve:api```
-4. Para visualizar el proyecto se necesita correr los servidores, en este caso utilizamos de forma local los servidores de firebase, para eso abrimos otra consola y nos paramos en el mismo repositorio para correr el siguiente comando```npm run serve```
+1. Abrir la consola y dirigirse a la carpeta donde quieras descargar el respositorio y correr el siguiente comando </br>```git clone https://github.com/matidiaz00/adn_mutations.git```
+2. Dirigirse a la nueva carpeta "adn_mutations" y correr el siguiente comando para instalar las dependencias </br>```npm install```
+3. Ahora corremos el siguiente comando para compilar el proyecto cada vez que haya un cambio </br>```npm run serve:api```
+4. Para visualizar el proyecto se necesita correr los servidores, en este caso utilizamos de forma local los servidores de firebase, para eso abrimos otra consola y nos paramos en el mismo repositorio para correr el siguiente comando </br>```npm run serve```
 </p>
 </details>
 
 <details markdown="2"><summary><b>Visualizar el proyecto</b></summary>
 <p>
-</br>
 
 Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/)
 
@@ -62,7 +60,6 @@ La URL base de la API es la siguiente [localhost:5001/adn-mutations/us-central1/
 
 <details markdown="3"><summary><b>Listado de endpoints</b></summary>
 <p>
-</br>
 
 En la siguiente tabla esta la información de todos los endpoints
 
@@ -78,7 +75,6 @@ GET | /v1/dna/stats | Estadisticas de mutaciones de ADN en nuestra base de datos
 
 <details markdown="4"><summary><b>Ejemplos para el endpoint POST /v1/dna/mutations</b></summary>
 <p>
-</br>
 
 Para el endpoint POST **/v1/dna/mutations** se necesita enviarle un JSON (en el Body Request de la llamada) de un ADN para que nos diga si tiene mutación o no, estos son unos ejemplos:
 
