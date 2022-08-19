@@ -37,7 +37,7 @@ Este proyecto se desarrollo con la version 16 de [NodeJS](https://nodejs.org/), 
 
 Tambien para descargar el proyecto se recomienda tener Git instalado.
 
-<details markdown="1"><summary>Descargar y correr el proyecto<summary>
+<details markdown="1"><summary>Descargar y correr el proyecto</summary>
 <p>
 
 Abrir la consola y dirigirse a la carpeta donde quieras descargar el respositorio y correr el siguiente comando
@@ -66,7 +66,7 @@ npm run serve
 </p>
 </details>
 
-<details markdown="2"><summary>Visualizar el proyecto<summary>
+<details markdown="2"><summary>Visualizar el proyecto</summary>
 <p>
 Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/)
 
@@ -76,7 +76,7 @@ La URL base de la API es la siguiente [localhost:5001/adn-mutations/us-central1/
 </p>
 </details>
 
-<details markdown="3"><summary>Listado de endpoints<summary>
+<details markdown="3"><summary>Listado de endpoints</summary>
 <p>
 En la siguiente tabla esta la información de todos los endpoints
 
@@ -90,7 +90,7 @@ GET | /v1/dna/stats | Estadisticas de mutaciones de ADN en nuestra base de datos
 </p>
 </details>
 
-<details markdown="4"><summary>Ejemplos para el endpoint POST /v1/dna/mutations<summary>
+<details markdown="4"><summary>Ejemplos para el endpoint POST /v1/dna/mutations</summary>
 <p>
 Para el endpoint POST **/v1/dna/mutations** se necesita enviarle un JSON (en el Body Request de la llamada) de un ADN para que nos diga si tiene mutación o no, estos son unos ejemplos:
 
