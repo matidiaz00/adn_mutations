@@ -4,19 +4,18 @@ Rest API para obtener información de ADN, por el momento solo tiene las funcion
 
 <kbd>ExpressJS</kbd>  <kbd>Firebase</kbd>  <kbd>Typescript</kbd>  <kbd>Jest</kbd>  <kbd>Swagger</kbd>
 
-### Demos producción
+## Demos producción
 
-Documentación de la API: [adn-mutations.web.app](https://adn-mutations.web.app/)
+- **Documentación de la API**: [adn-mutations.web.app](https://adn-mutations.web.app/)
+- **URL principal de la API**: [us-central1-adn-mutations.cloudfunctions.net](https://us-central1-adn-mutations.cloudfunctions.net/api)
 
-URL principal de la API: [us-central1-adn-mutations.cloudfunctions.net](https://us-central1-adn-mutations.cloudfunctions.net/api)
-
-### Servidor
+## Servidor
 
 Para subir la API y la documentación a la nuve y obtener una base de datos se utilizo los servicios de [Firebase](https://firebase.google.com/).
 
-- Base de datos: Firebase Firestore (base de datos no relacionable)
-- Documentación: Firebase Hosting
-- Rest API: Firebase Functions
+- **Base de datos**: Firebase Firestore (base de datos no relacionable)
+- **Documentación**: Firebase Hosting
+- **Rest API**: Firebase Functions
 
 Se programo un CI/CD con Github Actions para que se compile el proyecto y se suba al servidor al hacer un `git push` a la rama master.
 
@@ -25,10 +24,10 @@ En la carpeta "/functions" es donde se va a compilar la API y se va a subir a Fi
 En la carpeta "/public" es donde esta todo lo relaciónado a la documentación (implementado con Swagger) y se va a subir a Firebase Hosting
 
 Hay dos archivos de configuración importantes
-- /firebase.json: Es la configuración basica para el deploy (lo demas esta en el CI/CD)
-- /src/services/firebase.sdk.key.json: Llave privada para consumir todos los servicios de Firebase (obviamente no esta subido al repositorio)
+- **/firebase.json**: Es la configuración basica para el deploy (lo demas esta en el CI/CD)
+- **/src/services/firebase.sdk.key.json**: Llave privada para consumir todos los servicios de Firebase (obviamente no esta subido al repositorio)
 
-### Correr el proyecto en local
+## Correr el proyecto en local
 
 **Requisitos**
 
@@ -38,7 +37,9 @@ Este proyecto se desarrollo con la version 16 de [NodeJS](https://nodejs.org/), 
 
 Tambien para descargar el proyecto se recomienda tener Git instalado.
 
-**Descargar y correr el proyecto**
+<details>
+
+<summary markdown="1">Descargar y correr el proyecto<summary>
 
 Abrir la consola y dirigirse a la carpeta donde quieras descargar el respositorio y correr el siguiente comando
 
@@ -55,65 +56,72 @@ Ahora corremos el siguiente comando para compilar el proyecto cada vez que haya 
 Para visualizar el proyecto se necesita correr los servidores, en este caso utilizamos de forma local los servidores de firebase, para eso abrimos otra consola y nos paramos en el mismo repositorio para correr el siguiente comando
 
 `npm run serve`
+</details>
 
-**Visualizar el proyecto**
+<details markdown="2">
+<summary>Visualizar el proyecto<summary>
 
-Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost](http://localhost:5000/)
+Si hicimos los pasos anteriores ya podemos ingresar a la documentacion desde [localhost:5000](http://localhost:5000/)
 
 Para hacer pruebas de la API se puede utilizar herramientas como postman o en mi caso recomiendo una extención de Visual Studio llamada Thunder Client, deje en la raiz del repositorio el archivo **thunder-client.json** para que lo puedan importar si lo desean.
 
-La URL base de la API es la siguiente **http://localhost:5001/adn-mutations/us-central1/api**
+La URL base de la API es la siguiente [localhost:5001/adn-mutations/us-central1/api](http://localhost:5001/adn-mutations/us-central1/api)
+</details>
 
-**Listado de endpoints**
+<details markdown="3">
+<summary>Listado de endpoints<summary>
 
 En la siguiente tabla esta la información de todos los endpoints
 
 Type | Endpoint | Description
 ------------- | ------------- | -------------
-GET | / | - | Mensaje si funciona la API
+GET | / | Mensaje si funciona la API
 GET | /swagger.json | Configuración para Swagger UI
 GET | /v1/accounts/json-web-token | Se puede utilizar el UID de Firebase como token
 POST | /v1/dna/mutations | Define si un ADN tiene mutación o no
 GET | /v1/dna/stats | Estadisticas de mutaciones de ADN en nuestra base de datos
+</details>
 
-**Ejemplos para el endpoint POST**
+<details markdown="4">
+<summary>Ejemplos para el endpoint POST /v1/dna/mutations<summary>
 
-Para el endpoint POST /v1/dna/mutations se necesita enviarle un JSON (en el Body Request de la llamada) de un ADN para que nos diga si tiene mutación o no, estos son unos ejemplos:
+Para el endpoint POST **/v1/dna/mutations** se necesita enviarle un JSON (en el Body Request de la llamada) de un ADN para que nos diga si tiene mutación o no, estos son unos ejemplos:
 
 Ejemplo de ADN con mutación
 
 ```json
-    {
-        "dna": [
-            "ATGCGA", "CAGTGC", "TTATGT",
-            "AGAAGG", "AGTCAG", "TCACTG"
-        ]
-    }
+{
+    "dna": [
+        "ATGCGA", "CAGTGC", "TTATGT",
+        "AGAAGG", "AGTCAG", "TCACTG"
+    ]
+}
 ```
 
 Ejemplo de ADN sin mutación
 
 ```json
-    {
-        "dna": [
-            "ATGCGA", "CAGTGC", "TTATTT",
-            "AGACGG", "GCGTCA", "TCACTG"
-        ]
-    }
+{
+    "dna": [
+        "ATGCGA", "CAGTGC", "TTATTT",
+        "AGACGG", "GCGTCA", "TCACTG"
+    ]
+}
 ```
 
 Otro ejemplo de ADN con mutación
 
 ```json
-    {
-        "dna": [
-            "ATGCGA", "CAGTGC", "TTATGT",
-            "AGAAGG", "CCCCTA", "TCACTG"
-        ]
-    }
+{
+    "dna": [
+        "ATGCGA", "CAGTGC", "TTATGT",
+        "AGAAGG", "CCCCTA", "TCACTG"
+    ]
+}
 ```
+</details>
 
-**Testing Unitario**
+##Testing Unitario
 
 Para testear el proyecto se utilizo [JestJS](https://jestjs.io/), este tiene un archivo de configuración (jest.config.js) y con el siguiente comando lee todos los archivos *.spec.ts para testear todas las funcionalidades
 
