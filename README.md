@@ -82,27 +82,39 @@ Para el endpoint POST /v1/dna/mutations se necesita enviarle un JSON (en el Body
 
 Ejemplo de ADN con mutación
 
-```{
-    dna: [
-        "ATGCGA", "CAGTGC", "TTATGT",
-        "AGAAGG", "AGTCAG", "TCACTG"
-    ]
-}```
+```json
+    {
+        "dna": [
+            "ATGCGA", "CAGTGC", "TTATGT",
+            "AGAAGG", "AGTCAG", "TCACTG"
+        ]
+    }
+```
 
 Ejemplo de ADN sin mutación
 
-```{
-    dna: [
-        "ATGCGA", "CAGTGC", "TTATTT",
-        "AGACGG", "GCGTCA", "TCACTG"
-    ]
-}```
+```json
+    {
+        "dna": [
+            "ATGCGA", "CAGTGC", "TTATTT",
+            "AGACGG", "GCGTCA", "TCACTG"
+        ]
+    }
+```
 
 Otro ejemplo de ADN con mutación
 
-```{
-    dna: [
-        "ATGCGA", "CAGTGC", "TTATGT",
-        "AGAAGG", "CCCCTA", "TCACTG"
-    ]
-}```
+```json
+    {
+        "dna": [
+            "ATGCGA", "CAGTGC", "TTATGT",
+            "AGAAGG", "CCCCTA", "TCACTG"
+        ]
+    }
+```
+
+**Testing Unitario**
+
+Para testear el proyecto se utilizo [JestJS](https://jestjs.io/), este tiene un archivo de configuración (jest.config.js) y con el siguiente comando lee todos los archivos *.spec.ts para testear todas las funcionalidades
+
+`npm run test`
