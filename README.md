@@ -119,33 +119,21 @@ Para testear el proyecto se utilizo [JestJS](https://jestjs.io/), este tiene un 
 
 `npm run test`
 
+**Importante**
+
+Al correr el test en local devuelve un warning aunque se corran correctamente los test, esto es por los servidores locales de Firebase, cuando hace el test en el CI/CD no tira este mensaje.
+
 **Rutas**
 
 Para las routes /src/routes/v1/**/*.spec.ts se testea lo siguiente:
 
 - Los casos en los que deve devolver 200
-- Los casos en los que deve devolver 403 si es el caso de un POST
 - Que contengan en el header el tipo de contenido application/json
 - Que el response devuelva lo que se espera
-- En el caso de POST tambien chequea todos los casos de envio del body request diferentes
-- Casos en los que el usuario haga mal la funcion (ej: que no exista el endpoint o envie mal un request)
-
-**Controladores**
-
-Para los controllers /src/controllers/*.spec.ts se testea lo siguiente:
-
-- Que todas las funciones devuelvan lo esperado
-- Que las llamadas a la base de datos funcionen como es esperado
-- Todos los casos que podria devolver las funciones
-- En el caso de Swagger que el objeto que devuelve corresponda a la documentacion oficial
 
 **Servicios**
 
-Para los services /src/services/*.spec.ts se testea lo siguiente:
+Para los services solo es para un archivo /src/services/mutations.spec.ts se testea lo siguiente:
 
-- Firebase: Que las conecciones a los servicios de firebase funcionen como se espera
-- Mutations: Que las funciones de buscar verticalmente, horizontalmente o en diagonal devuelvan lo esperado
-
-**Middlewares**
-
-Solo se fija si el usuario esta autenticado y que los resultados en todos los escenarios sean como se espera
+- Que las funciones de buscar verticalmente, horizontalmente o en diagonal devuelvan lo esperado
+- Los casos en los que deve devolver 403 devuelvan el tipo de error esperado
