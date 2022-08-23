@@ -1,8 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import path from 'path';
-import swaggerJSDoc, { SwaggerDefinition } from 'swagger-jsdoc';
-import { dev_api_url, prod_api_url } from '../environment'
-import { nodeEnv } from '../environment';
+import swaggerJSDoc, { SwaggerDefinition, Options,  } from 'swagger-jsdoc';
+import { prod_api_url } from '../environment'
 
 const swaggerDefinition: SwaggerDefinition = {
     openapi: '3.0.0',
@@ -37,17 +36,16 @@ const swaggerDefinition: SwaggerDefinition = {
     }]
 }
 
-const options = {     
+const options: Options = {     
     swaggerDefinition,
     apis: [
         path.join(__dirname, '../routes/v1/**/*.route.js')
     ],
 };
  
-const hasMutation = (req: Request, res: Response, next: NextFunction) => { 
+const swaggerController = (req: Request, res: Response, next: NextFunction) => { 
     const swaggerSpec = swaggerJSDoc(options);
-    res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
 }
   
-export default hasMutation;
+export default swaggerController;

@@ -16,4 +16,4 @@ app.use('/v1', v1Route);
 
 const api = https.onRequest(app)
 
-export { api, app }
+export { api }

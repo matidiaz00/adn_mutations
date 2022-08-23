@@ -28,11 +28,17 @@ jobs:
           json: ${{ secrets.FIREBASE_SDK_KEY }}
           dir: 'src/services'
 
-      - name: Install dependencies and build NodeJS Project
-        run: npm install && npm run build
+      - name: Install NPM dependencies
+        run: npm install
 
       - name: Install Firebase Tools
         run: npm install -g firebase-tools
+
+      - name: Run unit testing
+        run: npm run test
+
+      - name: Build NodeJS Project
+        run: npm install && npm run build
 
       - name: Deploy to Firebase
         run: 'firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.FIREBASE_PROJECT_ID }}'
